@@ -9,5 +9,5 @@ XML configuration file generator for Cisco IP Phones | Written in Python
 ## Python Requirements
 - None! This will run with a base install of Python
 
-### Usage
-All you need to do is run generate-xml.py. It will ask you to enter required information, and create a folder under /config with the name of the MAC address of your phone.
+## Usage
+All you need to do is run generate-xml.py. It will ask you to enter required information, and create a directory under /config with the name of the MAC address of your phone.
