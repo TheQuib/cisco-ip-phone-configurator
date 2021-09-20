@@ -3,4 +3,9 @@
         <username>qhenry</username>
         <password>password</password>
      </user>
+</root><root>
+    <user>
+        <username>user</username>
+        <password>password</password>
+     </user>
 </root>
