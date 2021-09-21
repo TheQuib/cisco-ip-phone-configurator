@@ -15,18 +15,18 @@ anotha_one = True
 
 # Ask a yes or no question
 def yes_or_no(question):
-    reply = str(input(question+' (y/n): ')).lower().strip()
+    reply = str(input(question + ' (y/n): ')).lower().strip()
     if reply[0] == 'y':
         return True
     if reply[0] == 'n':
         return False
     else:
-        return yes_or_no("Uhhhh... please enter ")
+        return yes_or_no("Uhhhh, that wasn't an answer... please enter ")
 
 # Gets all required data from user
 def get_data():
-    phone_mac = input(" Enter phone " + str(phone_index) + "'s MAC address\n")
-    phone_name = input(" Enter phone" + str(phone_index) + "'s Name")
+    phone_mac = input("\n Enter phone " + str(phone_index) + "'s MAC address ")
+    phone_name = input("\n Enter phone" + str(phone_index) + "'s Name ")
 
     all_data = {'phone_mac': phone_mac, 'phone_name': phone_name}
     return all_data
@@ -43,7 +43,7 @@ def get_xml(all_data):
 
 # Saves the generated XML in a file under /config
 def save_xml(xml_data):
-    file = open(cwd + "\\config\\file1.xml", "a")
+    file = open(cwd + "\\generate-xml\\config\\file1.xml", "a")
     file.write(xml_data)
     file.close()
 
