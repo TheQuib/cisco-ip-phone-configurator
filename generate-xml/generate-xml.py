@@ -23,6 +23,22 @@ def yes_or_no(question):
     else:
         return yes_or_no("Uhhhh, that wasn't an answer... please enter ")
 
+# Generates XML in variable 'xml_current'
+def get_xml(all_data):
+    xml_current = """<xml>
+        <stuff>
+            Yes
+        </user>
+    </xml>"""
+    xml_data = xml_current%all_data
+    return xml_data
+
+# Saves the generated XML in a file under /config
+def save_xml(xml_data):
+    file = open(cwd + "\\generate-xml\\config\\file1.xml", "a")
+    file.write(xml_data)
+    file.close()
+
 # Gets all required data from user
 def get_data():
     phone_mac = input("(1/) Enter your phone MAC address: ")
@@ -39,13 +55,21 @@ def get_data():
 
     number_of_lines = input("(11/) Enter the number of lines you want to add: ")
     number_of_lines = int(number_of_lines)
-    for line in range(number_of_lines):
-        print(line)
-        #Needs feature label capture
-        #Needs line name (extension)
-        #Needs auth name (extension)
-        #Needs auth password (at most 8 characters)
-    
+    if number_of_lines == 1:
+        print(" Configuring line 2")
+        line_2_feature_label = input("   Enter Line Feature Label: ")
+        line_2_name = input("   Enter line name: ")
+        line_2_auth_name = input("   Enter line auth name: ")
+        line_2_auth_password = input("   Enter line auth password: ")
+    else:
+        currentLine = {}
+        for line in range(number_of_lines):
+            print(" Currently configuring line " + str(line + 2))
+            currentLine["line_{0}_feature_label".format(line + 2)] = input("   Enter Line Feature Label: ")
+            currentLine["line_{0}_name".format(line + 2)] = input("   Enter line name: ")
+            currentLine["line_{0}_auth_name".format(line + 2)] = input("   Enter line auth name: ")
+            currentLine["line_{0}_auth_password".format(line + 2)] = input("   Enter line auth password: ")
+            
     load_information = input("(12/) Enter your load information (default SIP42.9-4-2SR3-1S): ")
     directory_url = input("(13/) Enter your FreePBX directory URL (default http://" + freepbx_ip_address + "/directory.xml): ")
 
@@ -66,24 +90,7 @@ def get_data():
         }
     return all_data
 
-# Generates XML in variable 'xml_current'
-def get_xml(all_data):
-    xml_current = """<xml>
-        <stuff>
-            Yes
-        </user>
-    </xml>"""
-    xml_data = xml_current%all_data
-    return xml_data
-
-# Saves the generated XML in a file under /config
-def save_xml(xml_data):
-    file = open(cwd + "\\generate-xml\\config\\file1.xml", "a")
-    file.write(xml_data)
-    file.close()
-
 print(get_data())
-
 
 #while anotha_one:
 #    user_input = get_data()
