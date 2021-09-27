@@ -62,14 +62,29 @@ def get_data():
         line_2_auth_name = input("   Enter line auth name: ")
         line_2_auth_password = input("   Enter line auth password: ")
     else:
+        line_var_list = []
         currentLine = {}
         for line in range(number_of_lines):
             print(" Currently configuring line " + str(line + 2))
+
+            #List additions of variable names don't work
+
             currentLine["line_{0}_feature_label".format(line + 2)] = input("   Enter Line Feature Label: ")
+            strFeatureLabel = currentLine["line_{0}_feature_label".format(line + 2)]
+            line_var_list.append(strFeatureLabel)
+
             currentLine["line_{0}_name".format(line + 2)] = input("   Enter line name: ")
+            strLineName = currentLine["line_{0}_name".format(line + 2)]
+            line_var_list.append(strLineName)
+
             currentLine["line_{0}_auth_name".format(line + 2)] = input("   Enter line auth name: ")
+            strAuthName = currentLine["line_{0}_auth_name".format(line + 2)]
+            line_var_list.append(strAuthName)
+
             currentLine["line_{0}_auth_password".format(line + 2)] = input("   Enter line auth password: ")
-            
+            strAuthPassword = currentLine["line_{0}_auth_password".format(line + 2)]
+            line_var_list.append(strAuthPassword)
+
     load_information = input("(12/) Enter your load information (default SIP42.9-4-2SR3-1S): ")
     directory_url = input("(13/) Enter your FreePBX directory URL (default http://" + freepbx_ip_address + "/directory.xml): ")
 
@@ -85,6 +100,9 @@ def get_data():
         'process_node_name': process_node_name,
         'phone_label': phone_label,
         #Line information: ,
+            # Plan:
+                # Add each phone line variable into dictionary in for loop via formatted variable name
+                # Will create an item in dictionary of {'formattedVariablename': 'formattedVariableValue'}
         'load_information': load_information,
         'directory_url': directory_url,
         }
@@ -92,9 +110,9 @@ def get_data():
 
 print(get_data())
 
-#while anotha_one:
-#    user_input = get_data()
-#    generate_xml = get_xml(user_input)
-#
-#    save_xml(generate_xml)
-#    anotha_one = yes_or_no("Would you like to do another?")
+while anotha_one:
+    user_input = get_data()
+    generate_xml = get_xml(user_input)
+
+    save_xml(generate_xml)
+    anotha_one = yes_or_no("Would you like to do another?")
