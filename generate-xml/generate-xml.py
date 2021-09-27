@@ -42,7 +42,7 @@ def save_xml(xml_data):
 # Gets all required data from user
 def get_data():
     phone_mac = input("(1/) Enter your phone MAC address: ")
-    freepbx_ip_address = input("\n(2/) Enter your FreePBX IP Address: ")
+    freepbx_ip_address = input("(2/) Enter your FreePBX IP Address: ")
     ssh_user_id = input("(3/) Enter your SSH User ID: ")
     ssh_password = input("(4/) Enter your SSH password: ")
     time_zone = input("(5/) Enter your time zone (Ex: Eastern Standard/Daylight Time): ")
@@ -69,9 +69,10 @@ def get_data():
 
             #List additions of variable names don't work
 
+            #strFeatureLabel = str(currentLine["line_{0}_feature_label".format(line + 2)])
+            #line_var_list.append(strFeatureLabel)
             currentLine["line_{0}_feature_label".format(line + 2)] = input("   Enter Line Feature Label: ")
-            strFeatureLabel = currentLine["line_{0}_feature_label".format(line + 2)]
-            line_var_list.append(strFeatureLabel)
+
 
             currentLine["line_{0}_name".format(line + 2)] = input("   Enter line name: ")
             strLineName = currentLine["line_{0}_name".format(line + 2)]
